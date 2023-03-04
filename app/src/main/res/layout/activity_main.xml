@@ -4,15 +4,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:hint="Player X Turn"
+        android:paddingBottom="25dp"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/firstLayout"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintRight_toRightOf="parent"
+
+        android:id="@+id/firstLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/first_First"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="52dp"
+            app:layout_constraintLeft_toLeftOf="@id/firstLayout"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/first_Second"
+            app:layout_constraintRight_toLeftOf="@id/first_Third"
+            app:layout_constraintLeft_toRightOf="@id/first_First"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/first_Third"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="52dp"
+            app:layout_constraintRight_toRightOf="@id/firstLayout"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toBottomOf="@id/firstLayout"
+        android:id="@+id/secondLayout"
+        android:layout_marginTop="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/second_First"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="52dp"
+            app:layout_constraintLeft_toLeftOf="@id/secondLayout"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/second_Second"
+            app:layout_constraintRight_toLeftOf="@id/second_Third"
+            app:layout_constraintLeft_toRightOf="@id/second_First"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/second_Third"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="52dp"
+            app:layout_constraintRight_toRightOf="@id/secondLayout"
+            tools:layout_editor_absoluteY="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout> <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toBottomOf="@id/secondLayout"
+        android:id="@+id/thirdLayout"
+        android:layout_marginTop="400dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/third_First"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="52dp"
+            app:layout_constraintLeft_toLeftOf="@id/thirdLayout"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/third_Second"
+            app:layout_constraintRight_toLeftOf="@id/third_Third"
+            app:layout_constraintLeft_toRightOf="@id/third_First"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/third_Third"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="52dp"
+            app:layout_constraintRight_toRightOf="@id/thirdLayout"
+            tools:layout_editor_absoluteY="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
