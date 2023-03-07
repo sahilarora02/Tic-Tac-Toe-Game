@@ -2,19 +2,36 @@ package com.example.tictactoe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
-    var Count = 0
-    var arr = listOf<Button>(first_First , first_Second, first_Third , second_First ,
-        second_Second , second_Third , third_First , third_Second , third_Third)
+    private var Count: Int = 0
+    lateinit var  arr : ArrayList<Button>
+//    val btnArray = arrayOf(first_First , first_Second , first_Third , second_First , second_Second
+//    , second_Third , third_First ,third_Second , third_Third )
+
+
+//    val array = listOf<String>("first_First" , "first_Second" , "first_Third" , "second_First" , "second_Second"
+//     , "second_Third" , "third_First" ,"third_Second" , "third_Third")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        arr = ArrayList()
+arr.add(first_First)
+        arr.add(first_Second)
+        arr.add(first_Third)
+        arr.add(second_First)
+        arr.add(second_Second)
+        arr.add(second_Third)
+        arr.add(third_First)
+        arr.add(third_Second)
+        arr.add(third_Third)
+
 
 
         var PlayerVal = true
@@ -30,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             Count++
 
         }
+        first_First.isClickable = false
         if(Count>=3){
             checkWinner()
         }
@@ -37,6 +55,7 @@ class MainActivity : AppCompatActivity() {
    first_Second.setOnClickListener {
        if(PlayerVal){
            first_Second.text = "X"
+
            PlayerVal =   !PlayerVal
            Count++
 
@@ -46,6 +65,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       first_Second.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -63,6 +83,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       first_Third.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -80,6 +101,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       second_First.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -97,6 +119,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       second_Second.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -114,6 +137,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       second_Third.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -129,6 +153,7 @@ class MainActivity : AppCompatActivity() {
            third_First.text = "O"
            PlayerVal =   !PlayerVal
        }
+       third_First.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -148,6 +173,7 @@ class MainActivity : AppCompatActivity() {
 
            DrawOrWinner()
        }
+       third_Second.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -165,6 +191,7 @@ class MainActivity : AppCompatActivity() {
            Count++
 
        }
+       third_Third.isClickable = false
        if(Count>=3){
            checkWinner()
        }
@@ -214,37 +241,47 @@ class MainActivity : AppCompatActivity() {
             show.text = "Winner is  " + third_First.text
             Toast.makeText(this , "Third if" , Toast.LENGTH_SHORT).show()
         }else{
-          Drawmatch()
+//          Drawmatch()
         }
     }
 
     private fun resetMatch() {
         for(id in arr){
-            id.text=""
+            id.text =""
+            id.isClickable = true
         }
+
         Count = 0
         show.text = "Game Restart"
     }
-
-    private fun Drawmatch() {
-        show.text = "Match Draw"
-        resetMatch()
-
-    }
+//  private  fun resetMatchNow(){
+//      for(i in btnArray.indices){
+//          Log.i("hey =>" , btnArray[i].toString())
+//      }
+//  }
+//    private fun Drawmatch() {
+//        show.text = "Match Draw"
+//        resetMatch()
+//
+//    }
 
     private fun checkWinner() {
-        if(Count>=3 && first_First.text == first_Second.text && first_First.text == first_Third.text){
+        if(Count>=3 && first_First.text == first_Second.text && first_First.text == first_Third.text && first_First.text!=""){
+            Toast.makeText(this , first_First.text , Toast.LENGTH_SHORT).show()
+
             show.text = "Winner is  " + first_First.text
-            Toast.makeText(this , "First if" , Toast.LENGTH_SHORT).show()
 
-        }else if(Count>=3 &&second_First.text == second_Second.text && second_First.text == second_Third.text){
+        }else if(Count>=3 && second_First.text!="" && second_First.text == second_Second.text && second_First.text == second_Third.text){
+            Toast.makeText(this , second_First.text , Toast.LENGTH_SHORT).show()
+
             show.text = "Winner is   " + second_First.text
-            Toast.makeText(this , "Second if" , Toast.LENGTH_SHORT).show()
 
-        }else if(Count>=3 &&third_First.text == third_Second.text && third_First.text == third_Third.text){
+        }else if(Count>=3 && third_First.text!="" && third_First.text == third_Second.text && third_First.text == third_Third.text){
+            Toast.makeText(this , third_First.text , Toast.LENGTH_SHORT).show()
+
             show.text = "Winner is  " + third_First.text
-            Toast.makeText(this , "Third if" , Toast.LENGTH_SHORT).show()
         }else{
+//            Toast.makeText(this , "In Progress...." , Toast.LENGTH_SHORT).show()
 
         }
     }
