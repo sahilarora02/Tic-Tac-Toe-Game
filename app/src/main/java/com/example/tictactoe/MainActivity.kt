@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
-    private var Count: Int = 0
+    private var Count: Int = 1
     lateinit var  arr : ArrayList<Button>
 //    val btnArray = arrayOf(first_First , first_Second , first_Third , second_First , second_Second
 //    , second_Third , third_First ,third_Second , third_Third )
@@ -41,12 +41,16 @@ arr.add(first_First)
             first_First.text = "X"
             Count++
           PlayerVal =   !PlayerVal
+            show.text = "Player O Turn"
+
         }else{
             first_First.text = "O"
             PlayerVal =   !PlayerVal
             Count++
+            show.text = "Player X Turn"
 
         }
+
         first_First.isClickable = false
         if(Count>=3){
             checkWinner()
@@ -55,6 +59,8 @@ arr.add(first_First)
    first_Second.setOnClickListener {
        if(PlayerVal){
            first_Second.text = "X"
+           show.text = "Player O Turn"
+
 
            PlayerVal =   !PlayerVal
            Count++
@@ -63,6 +69,9 @@ arr.add(first_First)
            first_Second.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
+
+
 
        }
        first_Second.isClickable = false
@@ -76,11 +85,16 @@ arr.add(first_First)
            first_Third.text = "X"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player O Turn"
+
 
        }else{
            first_Third.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
+
+
 
        }
        first_Third.isClickable = false
@@ -93,12 +107,16 @@ arr.add(first_First)
        if(PlayerVal){
            second_First.text = "X"
            Count++
+           show.text = "Player O Turn"
+
 
            PlayerVal =   !PlayerVal
        }else{
            second_First.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
+
 
        }
        second_First.isClickable = false
@@ -111,12 +129,15 @@ arr.add(first_First)
        if(PlayerVal){
            second_Second.text = "X"
            Count++
+           show.text = "Player O Turn"
+
 
            PlayerVal =   !PlayerVal
        }else{
            second_Second.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
 
        }
        second_Second.isClickable = false
@@ -130,11 +151,15 @@ arr.add(first_First)
            second_Third.text = "X"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player O Turn"
+
 
        }else{
            second_Third.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
+
 
        }
        second_Third.isClickable = false
@@ -147,11 +172,17 @@ arr.add(first_First)
        if(PlayerVal){
            third_First.text = "X"
            Count++
+           show.text = "Player O Turn"
+
 
            PlayerVal =   !PlayerVal
        }else{
            third_First.text = "O"
            PlayerVal =   !PlayerVal
+           Count++
+           show.text = "Player X Turn"
+
+
        }
        third_First.isClickable = false
        if(Count>=3){
@@ -164,15 +195,19 @@ arr.add(first_First)
            third_Second.text = "X"
            PlayerVal =   !PlayerVal
            Count++
+                     show.text = "Player O Turn"
 
        }else{
            third_Second.text = "O"
            PlayerVal =   !PlayerVal
-       }
-       if(Count == 9){
+           Count++
+                 show.text = "Player X Turn"
 
-           DrawOrWinner()
        }
+//       if(Count == 9){
+//
+//           DrawOrWinner()
+//       }
        third_Second.isClickable = false
        if(Count>=3){
            checkWinner()
@@ -183,15 +218,19 @@ arr.add(first_First)
        if(PlayerVal){
            third_Third.text = "X"
            Count++
+           show.text = "Player O Turn"
 
            PlayerVal =   !PlayerVal
        }else{
            third_Third.text = "O"
            PlayerVal =   !PlayerVal
            Count++
+           show.text = "Player X Turn"
+
 
        }
        third_Third.isClickable = false
+
        if(Count>=3){
            checkWinner()
        }
@@ -228,27 +267,27 @@ arr.add(first_First)
 
     }
 
-    private fun DrawOrWinner() {
-        if( first_First.text == first_Second.text && first_First.text == first_Third.text){
-            show.text = "Winner is  " + first_First.text
-            Toast.makeText(this , "First if" , Toast.LENGTH_SHORT).show()
-
-        }else if(second_First.text == second_Second.text && second_First.text == second_Third.text){
-            show.text = "Winner is   " + second_First.text
-            Toast.makeText(this , "Second if" , Toast.LENGTH_SHORT).show()
-
-        }else if(third_First.text == third_Second.text && third_First.text == third_Third.text){
-            show.text = "Winner is  " + third_First.text
-            Toast.makeText(this , "Third if" , Toast.LENGTH_SHORT).show()
-        }else{
-//          Drawmatch()
-        }
-    }
+//    private fun DrawOrWinner() {
+//        if( first_First.text == first_Second.text && first_First.text == first_Third.text){
+//            show.text = "Winner is  " + first_First.text
+//            Toast.makeText(this , "First if" , Toast.LENGTH_SHORT).show()
+//
+//        }else if(second_First.text == second_Second.text && second_First.text == second_Third.text){
+//            show.text = "Winner is   " + second_First.text
+//            Toast.makeText(this , "Second if" , Toast.LENGTH_SHORT).show()
+//
+//        }else if(third_First.text == third_Second.text && third_First.text == third_Third.text){
+//            show.text = "Winner is  " + third_First.text
+//            Toast.makeText(this , "Third if" , Toast.LENGTH_SHORT).show()
+//        }else{
+////          Drawmatch()
+//        }
+//    }
 
     private fun resetMatch() {
         for(id in arr){
             id.text =""
-            id.isClickable = true
+            Disablebtn()
         }
 
         Count = 0
@@ -264,25 +303,62 @@ arr.add(first_First)
 //        resetMatch()
 //
 //    }
+    private  fun Disablebtn(){
+    for(id in arr){
+        id.isClickable = true
+    }
+    }
+    private  fun DisableFalse(){
+        for(id in arr){
+            id.isClickable = false
+        }
+    }
 
     private fun checkWinner() {
         if(Count>=3 && first_First.text == first_Second.text && first_First.text == first_Third.text && first_First.text!=""){
-            Toast.makeText(this , first_First.text , Toast.LENGTH_SHORT).show()
 
-            show.text = "Winner is  " + first_First.text
+            show.text = "Winner is   " + first_First.text
+            DisableFalse()
+
 
         }else if(Count>=3 && second_First.text!="" && second_First.text == second_Second.text && second_First.text == second_Third.text){
-            Toast.makeText(this , second_First.text , Toast.LENGTH_SHORT).show()
 
             show.text = "Winner is   " + second_First.text
+            DisableFalse()
 
         }else if(Count>=3 && third_First.text!="" && third_First.text == third_Second.text && third_First.text == third_Third.text){
-            Toast.makeText(this , third_First.text , Toast.LENGTH_SHORT).show()
 
-            show.text = "Winner is  " + third_First.text
-        }else{
-//            Toast.makeText(this , "In Progress...." , Toast.LENGTH_SHORT).show()
+            show.text = "Winner is   " + third_First.text
+            DisableFalse()
 
+
+        }else if(Count>=3 && first_First.text!="" && first_First.text == second_First.text && first_First.text == third_First.text){
+            show.text = "Winner is   " + first_First.text
+            DisableFalse()
+
+
+        }else if(Count>=3 && first_Second.text!="" && first_Second.text == second_Second.text && first_Second.text == third_Second.text){
+           show.text =  "Winner is   " + first_Second.text
+            DisableFalse()
+
+
+        }else if(Count>=3 && first_Third.text!="" && first_Third.text == second_Third.text && first_Third.text == third_Third.text){
+            show.text =  "Winner is   " + first_Third.text
+            DisableFalse()
+
+
+        }else if(Count>=3 && first_First.text!="" && first_First.text == second_Second.text && first_First.text == third_Third.text){
+            show.text =  "Winner is   " + first_First.text
+            DisableFalse()
+
+
+        }else if(Count>=3 && first_Third.text!="" && first_Third.text == second_Second.text && first_Third.text == third_First.text){
+            show.text =  "Winner is   " + first_Third.text
+            DisableFalse()
+
+
+        }else if(Count==9){
+            show.text = "Draw Match 💀💀"
         }
     }
 }
